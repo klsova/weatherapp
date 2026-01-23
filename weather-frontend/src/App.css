@@ -1,42 +1,187 @@
-body {
-    background: linear-gradient(237deg, #000000, #005c6b, #1e0067, #680087);
-    background-size: 800% 800%;
-
-    -webkit-animation: AnimationName 16s ease infinite;
-    -moz-animation: AnimationName 16s ease infinite;
-    animation: AnimationName 16s ease infinite;
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  padding: 1rem;
 }
 
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 96%}
-    50%{background-position:100% 5%}
-    100%{background-position:0% 96%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 96%}
-    50%{background-position:100% 5%}
-    100%{background-position:0% 96%}
-}
-@keyframes AnimationName {
-    0%{background-position:0% 96%}
-    50%{background-position:100% 5%}
-    100%{background-position:0% 96%}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
 
-#root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  margin: 0 0 2rem;
+}
+
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 0.85rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box button {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.search-box button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search-box button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.search-box button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 80, 80, 0.3);
+}
+
+.error p {
+  margin: 0;
+  color: #ff8a8a;
+  font-size: 0.9rem;
+}
+
+.weather-result {
+  margin-top: 2rem;
   text-align: center;
+  animation: fadeIn 0.4s ease;
 }
 
-input {
-  font-size: 24px;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-button {
-  margin: 1em;  
+.weather-icon {
+  font-size: 4rem;
+  margin-bottom: 0.25rem;
+}
+
+.city-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.25rem;
+}
+
+.temperature {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0.25rem 0;
+  letter-spacing: -0.03em;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  margin: 0 0 1.5rem;
+  text-transform: capitalize;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
 }
